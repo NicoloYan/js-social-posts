@@ -100,3 +100,30 @@ for (let i = 0; i < postsArray.length; i++) {
     // Appendo le cards a cardsContainer
     postsContainer.innerHTML += cardToPrint
 }
+
+let like = document.querySelectorAll('.js-likes-counter');
+console.log(like);
+let likeCounterArray = [...like];
+console.log(likeCounterArray);
+let likeBtn = document.querySelectorAll('.like-button');
+let likeArray = [...likeBtn];
+
+for (let i = 0; i < likeArray.length; i++) {
+
+    likeArray[i].addEventListener('click', function (event) {
+
+        // Condizione if aggiunta per Bonus 3
+        if (this.classList.contains('like-button--liked')) {
+            this.classList.remove('like-button--liked');
+            event.preventDefault();
+            likeCounterArray[i].innerHTML--;
+            console.log(likeCounterArray[i]);
+        } else {
+            this.classList.add('like-button--liked');
+            event.preventDefault();
+            likeCounterArray[i].innerHTML++;
+            console.log(likeCounterArray[i]);
+        }
+
+    })
+}
