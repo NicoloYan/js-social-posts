@@ -22,26 +22,26 @@ let postsArray = [
     {
         id: 1,
         name: 'Joe Larson',
-        author_picture: 'https://unsplash.it/300/300?image=<1>',
-        date: 06/20/2022,
+        author_picture: 'https://unsplash.it/300/300?image=1',
+        date: '06/20/2022',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-        post_picture: 'https://unsplash.it/300/300?image=<2>',
+        post_picture: 'https://unsplash.it/300/300?image=2',
         likes: 34
     },
     {
         id: 2,
         name: 'Lara Field',
-        author_picture: 'https://unsplash.it/300/300?image=<3>',
-        date: 05/20/2022,
+        author_picture: 'https://unsplash.it/300/300?image=3',
+        date: '05/20/2022',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-        post_picture: 'https://unsplash.it/300/300?image=<4>',
+        post_picture: 'https://unsplash.it/300/300?image=4',
         likes: 51
     },
     {
         id: 3,
         name: 'Serena Obrien',
-        author_picture: 'https://unsplash.it/300/300?image=<5>',
-        date: 04/20/2022,
+        author_picture: 'https://unsplash.it/300/300?image=5',
+        date: '04/20/2022',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         post_picture: null,
         likes: 15
@@ -49,10 +49,54 @@ let postsArray = [
     {
         id: 4,
         name: 'Dennis Schneider',
-        author_picture: 'https://unsplash.it/300/300?image=<7>',
-        date: 03/20/2022,
+        author_picture: 'https://unsplash.it/300/300?image=7',
+        date: '03/20/2022',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-        post_picture: 'https://unsplash.it/300/300?image=<8>',
+        post_picture: 'https://unsplash.it/300/300?image=8',
         likes: 134
     }
 ]
+
+// Seleziono l'elemento HTML al quale appenderò le cards
+const postsContainer = document.querySelector('.posts-list')
+
+// Ciclo for per scorrere l'array e creo le cards
+for (let i = 0; i < postsArray.length; i++) {
+    const thisPost = postsArray[i]
+
+    // Creo il Template
+    const cardToPrint = `
+        <div class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${thisPost.author_picture}" alt="${thisPost.name}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${thisPost.name}</div>
+                        <div class="post-meta__time">${thisPost.date}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${thisPost.text}</div>
+            <div class="post__image">
+                <img src="${thisPost.post_picture}" alt="">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${thisPost.likes}</b> persone
+                    </div>
+                </div> 
+            </div>            
+        </div> -->
+    `
+    // Appendo le cards a cardsContainer
+    postsContainer.innerHTML += cardToPrint
+}
